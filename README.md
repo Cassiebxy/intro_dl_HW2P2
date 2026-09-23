@@ -1,6 +1,15 @@
 # intro_dl_HW2P2
 
-Repository for CMU 11-785 HW2P2.
+Repository for CMU 11-785 **HW2P2 (Fall 2026)**.
+
+## Competition
+
+Kaggle competition page:
+
+https://www.kaggle.com/competitions/hw-2-p-2-fall-2026-student-competition/overview
+
+The course-provided **handin / starter package** is available from the Kaggle competition page above.  
+This repository tracks the code, planning notes, and experiment records used for the project, but does not store the full official dataset.
 
 ## Repository structure
 
@@ -15,7 +24,7 @@ intro_dl_HW2P2/
 
 ## Data
 
-The official HW2P2 dataset is intentionally **not tracked by Git**.
+The official HW2P2 dataset is intentionally **not tracked by Git** because it contains a large number of image files.
 
 Expected local layout:
 
@@ -23,13 +32,37 @@ Expected local layout:
 hw2p2_data/
 ├── cls_data/
 │   ├── train/
+│   │   ├── images/
+│   │   └── labels.txt
 │   ├── dev/
-│   └── test/
+│   │   ├── images/
+│   │   └── labels.txt
+│   ├── test/
+│   │   └── images/
+│   ├── test_pairs.txt
+│   └── val_pairs.txt
 └── ver_data/
+    └── *.jpg
 ```
 
-Keep `hw2p2_data/` locally (or on PSC/Kaggle) and do not commit it to this repository.
+Keep `hw2p2_data/` locally, on PSC, or in the Kaggle environment. Do not commit it to this repository.
+
+## Project workflow
+
+- Keep the original course starter / handin code under `starter/`.
+- Keep planning and model ideas in `PLAN.md`.
+- Record meaningful experiments under `experiments/`.
+- Keep a reproducible baseline and submission pipeline.
+- Track code and configuration changes with Git.
+- Do not commit large datasets, model checkpoints, or generated artifacts.
 
 ## Large generated files
 
-Model checkpoints, W&B artifacts, notebook checkpoints, and generated submissions are ignored by default.
+The following are ignored by default through `.gitignore`:
+
+- `hw2p2_data/`
+- model checkpoints such as `*.pt`, `*.pth`, and `*.ckpt`
+- `wandb/`
+- generated `submissions/`
+- Jupyter notebook checkpoints
+- Python cache files
