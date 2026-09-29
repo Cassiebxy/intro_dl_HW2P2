@@ -1,6 +1,6 @@
 # T10 — Final Selection, Kaggle Final & Gradescope
 
-- **Status**: pending | **Owner**: Cathy | **Track**: both | **Due**: Oct 8 selection; **Oct 9 final submit (daytime buffer)**; Oct 10–11 Gradescope | **Blocked-by**: T06–T09
+- **Status**: pending | **Owner**: Cathy | **Track**: both | **Due**: Oct 8 selection; **Oct 9 final submit (daytime buffer)**; Oct 10–11 Gradescope | **Blocked-by**: the selected final model — T06–T09 if explored, otherwise the verified baseline (T04) if exploration is skipped
 
 ## Steps
 
@@ -13,7 +13,8 @@
 ## Acceptance
 
 - [ ] Selection rationale in decision log (combined score table across candidates)
-- [ ] Kaggle final selected score ≥ checkpoint score (else explain)
+- [ ] Final model chosen by **val combined score**, not by having to beat the checkpoint version; the checkpoint is a best-effort milestone, not a bar the final must clear
+- [ ] Final `MODEL` in the Gradescope notebook matches the selected Kaggle submission model (no train-time-only variant left behind)
 - [ ] Gradescope zip generated; auto-grading result checked; submission timestamped
 - [ ] `experiments/runs/` complete for every promoted run
 

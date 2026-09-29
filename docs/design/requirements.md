@@ -25,11 +25,18 @@ Final Kaggle Score = 0.5 × Classification Accuracy + 0.5 × (1 − Verification
 | Checkpoint (early) | Oct 2, 2026 11:59 PM EST | Miss ⇒ final score × 0.97 |
 | Final Kaggle | Oct 9, 2026 11:59 PM EST | Weekend (2 days) after for Gradescope cleanup+submit |
 
-Checkpoint requires ALL of:
+Checkpoint requires ALL of (Oct 2 is a **best-effort** milestone — miss ⇒ −3%/×0.97, but it is not a gate that compresses the pipeline or truncates learning steps):
 - [ ] Kaggle submission made (join via the exact link in `references/`)
-- [ ] Score ≥ 0.80 cutoff
+- [ ] Score ≥ 0.80 cutoff (target, not a pipeline-compression gate)
 - [ ] HW2 Canvas Quiz completed
 - [ ] Name visible on the Kaggle leaderboard
+
+## Submission integrity & data rules (hard — from starter Requirement Acknowledgement)
+
+- **No external data or datasets at any stage** (starter acknowledgement rule 5). Only the provided `hw2p2_data/`.
+- **Protected submission cells must not be modified.** The notebook's final submission cell(s) are DO-NOT-MODIFY; altering them (even to fix a discrepancy) is an **Academic Integrity Violation** (starter acknowledgement rule 3).
+- **Final Gradescope `MODEL` must match the selected Kaggle submission model.** The model object assigned to `MODEL` in the final notebook must be the same model whose score was selected — no train-time-only or swapped-in variant (starter acknowledgement rule 3).
+- Credentials (Kaggle API, wandb key) come from environment variables / untracked config — never committed, never pasted into a notebook copy that could be published.
 
 ## Model rules (instructor-endorsed)
 

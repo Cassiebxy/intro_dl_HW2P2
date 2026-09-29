@@ -2,23 +2,25 @@
 
 > Times are wall-clock targets, EST. The path is "as-early-as-possible"; every ⚠️ is a known place the schedule breaks.
 
-## Checkpoint sprint (stable track) — deadline Oct 2 11:59 PM EST
+## Baseline track (stable) — Oct 2 checkpoint = best-effort milestone
 
 ```text
-Sep 29        T01 PSC env verify ──► T02 baseline backbone ──► T03 smoke test
-              (must finish today; ⚠️ PSC queue wait: use the wait to do T02/T03 code work)
-Sep 30        T04 baseline training (≈20 epochs, measured per-epoch)
-              ⚠️ if per-epoch × 20 > remaining time → cut epochs, keep pipeline valid
+Sep 29        T01 PSC env + storage verify ──► T02 pipeline completion + baseline ──► T03 smoke test
+              (must finish today; ⚠️ PSC queue wait: use the wait for T02/T03 code work, not background runs)
+Sep 30        T04 baseline training (≈20 epochs reference budget, measured per-epoch)
+              ⚠️ if per-epoch × 20 > remaining time → submit best available as best-effort;
+                 do NOT compress pipeline or truncate learning to hit Oct 2
 Oct 1         T04 finish + best-checkpoint selection; dry-run submission.csv locally
-Oct 2 morning T05 Kaggle submission (target: by NOON) + Canvas quiz
+Oct 2 morning T05 Kaggle submission (best-effort, target by NOON) + Canvas quiz
               ⚠️ buffer: leaderboard queue, upload failures, daily-limit count
 ```
 
-**Hard gate**: T03 fully green before T04 long training. No exceptions.
+**Pipeline hard gate**: T03 fully green before T04 long training. No exceptions. Oct 2 itself is best-effort, not a hard gate.
 
 ## Exploration track — deadline Oct 9 11:59 PM EST
 
 ```text
+(enter after verified baseline T04 exists; Oct 2 checkpoint runs in parallel as best-effort)
 Oct 2 evening  T06 start ResNet CE screen (subset, 2–3 epochs, steps+wall-clock recorded)
 Oct 3–4        T06 full-data confirmation vs H1 baseline
                T07 ArcFace screen (same backbone, short runs)

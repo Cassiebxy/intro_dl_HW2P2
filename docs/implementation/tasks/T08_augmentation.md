@@ -1,6 +1,6 @@
 # T08 — Augmentation Experiments
 
-- **Status**: pending | **Owner**: Cathy | **Track**: exploration | **Due**: Oct 5–7 (parallel with T07) | **Blocked-by**: T05
+- **Status**: pending | **Owner**: Cathy | **Track**: exploration | **Due**: Oct 5–7 (parallel with T07) | **Blocked-by**: verified baseline (usable T04 result), **not** the Oct 2 checkpoint submission (T05)
 - **Hypothesis**: augmentation as regularization; identity-preserving transforms only. One change at a time.
 
 ## Rules

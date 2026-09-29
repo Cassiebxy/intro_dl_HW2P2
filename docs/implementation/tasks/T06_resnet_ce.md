@@ -1,6 +1,6 @@
 # T06 — Custom Residual CNN + CE
 
-- **Status**: pending | **Owner**: Cathy | **Track**: exploration | **Due**: Oct 3–4 | **Blocked-by**: T05
+- **Status**: pending | **Owner**: Cathy | **Track**: exploration | **Due**: Oct 3–4 | **Blocked-by**: verified baseline (usable T04 result), **not** the Oct 2 checkpoint submission (T05)
 - **Hypothesis**: H2 (see `docs/design/model_hypotheses.md`)
 
 ## Steps

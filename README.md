@@ -66,20 +66,28 @@ intro_dl_HW2P2/
 | Experiment evidence | `experiments/runs/` |
 | Prior review feedback | `review/<ai>/` |
 
+## Repo scope (this repo is public)
+
+This repository is a **public** repo and holds **only** planning, records, and materials that are safe to publish: `PLAN.md`, `docs/`, `experiments/runs/`, `review/`, `references/`, `starter/`.
+
+- **Working implementation is not published here.** Keep working notebook/code in a **private** repo or purely local Git; the assignment implementation should not be made public just because API keys were removed — a key-stripped notebook is still your graded solution.
+- **Credentials** (Kaggle API, wandb key) come from environment variables or a local **untracked** config; never paste them into a notebook copy that might be committed or shared.
+- Do not assume that deleting a key makes a notebook safe to push; the starter's submission/credential cells are protected and must stay unmodified.
+
 ## Data
 
-The official HW2P2 dataset is intentionally **not tracked by Git** (too large). See `DATA.md` for the expected local layout and path conventions. Keep `hw2p2_data/` locally, on PSC, or in the Kaggle environment — never commit it.
+The official HW2P2 dataset is intentionally **not tracked by Git** (too large). See `DATA.md` for the expected local layout and path conventions. Keep `hw2p2_data/` locally, on PSC `$LOCAL`, or in the Kaggle environment — never commit it.
 
 ## Red lines (never commit)
 
 - API keys / tokens (wandb key, Kaggle API token) and any credential in notebook copies.
 - `hw2p2_data/`, the raw competition zip, model checkpoints (`*.pt` / `*.pth` / `*.ckpt`), generated submissions, `wandb/`.
-- This repo is **public**; keep private notes out of it.
+- Working notebook/implementation that should stay private; this repo is **public** — keep private notes and graded code out of it.
 
 ## Project workflow
 
-- Official starter materials stay in `starter/` untouched; working notebook copies live elsewhere (PSC/Jupyter).
+- Official starter materials stay in `starter/` untouched; working notebook/code live in a private/local Git (not this public repo).
 - Planning lives in `PLAN.md`; per-task detail in `docs/implementation/tasks/`.
 - Record every meaningful experiment under `experiments/runs/`.
 - Review comments (AI or human) go under `review/`, filenames prefixed with the date.
-- Track code and config changes with Git; never overwrite the checkpoint dir tied to a committed submission.
+- Track planning/config changes with Git; never overwrite the checkpoint dir tied to a committed submission.

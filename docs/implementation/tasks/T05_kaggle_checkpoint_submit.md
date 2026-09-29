@@ -1,6 +1,7 @@
-# T05 — Checkpoint Submission + Canvas Quiz
+# T05 — Checkpoint Submission + Canvas Quiz (best-effort milestone)
 
-- **Status**: pending | **Owner**: Cathy | **Track**: stable | **Due**: **Oct 2 by NOON** | **Blocked-by**: T04
+- **Status**: pending | **Owner**: Cathy | **Track**: stable | **Due**: **Oct 2 by NOON (best-effort)** | **Blocked-by**: T04
+- **Framing**: Oct 2 is a best-effort milestone. Missing it costs the −3%/×0.97 checkpoint penalty, but it is **not** a hard gate that compresses the pipeline or truncates learning steps. Submit the best verified checkpoint available by noon; the Canvas quiz is required regardless of score.
 
 ## Steps
 
@@ -14,9 +15,9 @@
 
 ## Acceptance
 
-- [ ] Kaggle score ≥ 0.80 (Very Low cutoff)
+- [ ] Best verified checkpoint submitted by noon; score ≥ 0.80 is the target (best-effort, not a pipeline-compression gate)
 - [ ] Name on leaderboard; submission message + timestamp recorded
-- [ ] Canvas quiz submitted
+- [ ] Canvas quiz submitted (required regardless of score)
 - [ ] Checkpoint dir frozen; dry-run reproducibility note written
 - [ ] ≥ 2 Kaggle slots left unused for same-day fixes
 

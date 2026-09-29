@@ -29,14 +29,14 @@ hw2p2_data/
 - The classification test set and verification test pairs have no labels — Kaggle leaderboard is the only feedback there.
 - Verification may involve identities unseen during training: learn an embedding, not just a classifier.
 
-## Path conventions
+## Path conventions (two zones — do not mix)
 
-- Local: `hw2p2_data/` next to the repo (current machine); point the notebook `config['data_root']` here.
-- PSC: course shared directory `/local/hw2p2_data` (verify existence when T01 runs) or a personal copy.
-- Checkpoint dir: `config['checkpoint_dir']` — must be writable and **never reused by a new run** once its score is committed.
+- **Local machine**: `hw2p2_data/` next to the repo; point `config['data_root']` here.
+- **PSC node-local staging**: dataset **must** live on `$LOCAL/hw2p2_data` (per starter cells 25/39/41) to avoid shared-FS I/O bottlenecks. `$LOCAL` is **temporary** — wiped on node change / allocation end, so re-download the dataset into `$LOCAL` at the start of each new-node session. `config['data_root']` = `$LOCAL/hw2p2_data`.
+- **PSC persistent**: checkpoints, code, notebooks, logs live on the persistent home path (e.g. `/jet/home/<user>/hw2p2/...`), **never** on `$LOCAL`. `config['checkpoint_dir']` points here — must be writable, survive a kernel restart, and **never be reused by a new run** once its score is committed.
 - The raw zip `hw-2-p-2-fall-2026-student-competition.zip` is redundant once extracted; both stay out of Git.
 
 ## Notes
 
-- `config['num_classes']` may be reduced **only for the train subset** during smoke tests; never shrink the dev/test label space.
+- The classification label space is fixed at **8,631 classes** for train, dev, and test. `config['num_classes']` must stay 8,631 so the classifier can score the full dev/test labels — shrink a smoke test by limiting **steps/batches/samples**, not by reducing the label space (see T03).
 - Pair files are consumed by the starter's `ImagePairDataset`; EER is computed by the starter's `valid_epoch_ver`.
