@@ -1,7 +1,9 @@
-# HW2P2 Master Plan (2026-09-29 → 2026-10-09)
+# HW2P2 Master Plan (2026-09-29 → 2026-10-11)
 
 > This file is the single source of truth for the HW2P2 project plan.
 > Official requirements live in `references/` and `starter/`; per-task details live in `docs/implementation/tasks/`.
+
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
 
 ## Context
 
@@ -19,10 +21,10 @@
 
 | Track | Goal | Window |
 | --- | --- | --- |
-| Stable track | A committed checkpoint version ≥ 0.80, always reproducible | Sep 29 → Oct 2 |
-| Exploration track | Stronger residual CNN + ArcFace + augmentation + TTA | Oct 2 evening → Oct 9 |
+| Stable track | A complete, correct, reproducible training and submission pipeline; seek early 0.80 when ready | Starts Sep 29; readiness-driven |
+| Exploration track | Evaluate stronger models after a verified baseline; optional experiments need not all be completed | Baseline ready → final-model freeze |
 
-## Phase A — Checkpoint sprint (countdown from today)
+## Phase A — Complete setup and reproducible baseline
 
 ### A1. PSC environment verification (T01, first thing)
 - SSH Bridges2 → request compute node → load the course shared conda env → launch Jupyter.
@@ -37,7 +39,7 @@
 ### A3. End-to-end smoke test (T03, before any long training)
 
 ```text
-small subset (reduced num_classes + 1–2 epochs)
+limited samples/batches/steps (keep the 8631-class output)
 → forward/backward → save checkpoint → reload checkpoint
 → classification inference → verification EER → generate submission.csv
 ```
@@ -47,14 +49,14 @@ small subset (reduced num_classes + 1–2 epochs)
 ### A4. Baseline training (T04, start immediately after smoke test)
 - Starter recommends **20 epochs for the early submission**; batch_size 64, increase if V100 memory allows.
 - Record per epoch: train/val cls acc, ver EER, combined score; select best checkpoint by combined score.
-- Estimate per-epoch wall-clock first; if it cannot fit before Oct 2, trade epochs for a "cutoff-safe" score — the goal is crossing 80, not maximizing yet.
+- Measure full-data training/validation time before committing a run budget. Do not reduce or omit setup, checks, or necessary training solely to meet Oct 2; 20 epochs is a reference budget, not a score guarantee.
 
-### A5. Checkpoint submission (T05, submit by Oct 2 **noon**, not the last hour)
-- Use the DO-NOT-MODIFY cells to generate and submit `submission.csv`; confirm the leaderboard shows the name and score ≥ 80.
-- **Complete the HW2 Canvas Quiz** (a checkpoint requirement).
-- Keep buffer for training completion, download/upload, and leaderboard queue.
+### A5. Optional early-cutoff attempt (T05)
+- When the verified pipeline and trained model are ready, use the official submission flow and record the actual Kaggle result. Reaching 0.80 before Oct 2 is desirable, but missing it does not block the project or justify skipping steps.
+- **Canvas HW2 Quiz: completed**, confirmed by Cathy on Sep 29; no quiz score independently verified.
+- An early attempt is optional; the final Kaggle and Gradescope submissions remain project deliverables.
 
-## Phase B — Exploration track (Oct 2 evening → Oct 9)
+## Phase B — Exploration track (readiness-driven; original dates below are provisional)
 
 1. **B1 Custom residual CNN + CE** (T06, Oct 3–4): ResNet-style from scratch, 512-d embeddings, ≤30M params; avoid aggressive early downsampling on 112×112; short screens record steps and wall-clock, not just epochs; controlled comparison vs starter backbone.
 2. **B2 ArcFace comparison** (T07, Oct 4–6): same backbone, CE vs ArcFace; cls acc and EER reported separately; strictly follow staff ArcFace rules.
@@ -70,10 +72,12 @@ small subset (reduced num_classes + 1–2 epochs)
 
 ## Risks and fallbacks
 
+The technical revisions listed in the Codex/GPT reviews remain proposed unless explicitly marked applied; this update records Cathy's priorities, not completion of the full review backlog.
+
 | Risk | Fallback |
 | --- | --- |
 | PSC queue / node wait | Long runs go to background; use waiting time for T02/T03 code work |
-| 20 epochs won't fit before Oct 2 | Fewer epochs for a cutoff-safe score; submission pipeline already validated, can submit any time |
+| Baseline cannot reach 0.80 before Oct 2 | Keep completing and validating the pipeline; record the missed opportunity and continue. Do not compress required steps to chase the cutoff |
 | V100 OOM | Reduce batch_size / workers; record it, don't brute-force |
 | Low/Med/High cutoffs still TBD | Treat 80% as the only hard target; exploration decisions based on val combined score |
 | ArcFace rule violations | Checklist against @301 before implementing; ask staff when ambiguous |
@@ -88,6 +92,6 @@ small subset (reduced num_classes + 1–2 epochs)
 
 ## Verification (definition of done)
 
-- **Phase A**: full smoke-test chain passes; Kaggle leaderboard shows ≥ 80 with own name; Canvas quiz submitted.
+- **Phase A**: setup, complete pipeline, smoke/resume checks, baseline measurements, and a reproducible inference path are verified. Early Kaggle ≥0.80 is optional, not a phase gate. Canvas quiz is user-confirmed complete.
 - **Phase B**: every experiment has a record in `experiments/runs/`; final submission's val combined score ≥ checkpoint version.
 - **Final**: Gradescope zip generated and auto-grading passes.

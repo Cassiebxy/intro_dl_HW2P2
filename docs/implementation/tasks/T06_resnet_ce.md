@@ -1,6 +1,8 @@
 # T06 — Custom Residual CNN + CE
 
-- **Status**: pending | **Owner**: Cathy | **Track**: exploration | **Due**: Oct 3–4 | **Blocked-by**: T05
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
+
+- **Status**: pending | **Owner**: Cathy | **Track**: exploration | **Due**: Oct 3–4 | **Blocked-by**: verified baseline and pipeline readiness; not T05/cutoff success
 - **Hypothesis**: H2 (see `docs/design/model_hypotheses.md`)
 
 ## Steps

@@ -1,6 +1,8 @@
 # T10 — Final Selection, Kaggle Final & Gradescope
 
-- **Status**: pending | **Owner**: Cathy | **Track**: both | **Due**: Oct 8 selection; **Oct 9 final submit (daytime buffer)**; Oct 10–11 Gradescope | **Blocked-by**: T06–T09
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
+
+- **Status**: pending | **Owner**: Cathy | **Track**: both | **Due**: Oct 8 selection; **Oct 9 final submit (daytime buffer)**; Oct 10–11 Gradescope | **Blocked-by**: at least one validated reproducible candidate; optional experiments completed or explicitly stopped
 
 ## Steps
 
