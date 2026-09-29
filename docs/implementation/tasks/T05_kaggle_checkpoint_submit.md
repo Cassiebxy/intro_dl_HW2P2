@@ -1,26 +1,24 @@
-# T05 — Checkpoint Submission + Canvas Quiz (best-effort milestone)
+# T05 — Optional Early-Cutoff Attempt
 
-- **Status**: pending | **Owner**: Cathy | **Track**: stable | **Due**: **Oct 2 by NOON (best-effort)** | **Blocked-by**: T04
-- **Framing**: Oct 2 is a best-effort milestone. Missing it costs the −3%/×0.97 checkpoint penalty, but it is **not** a hard gate that compresses the pipeline or truncates learning steps. Submit the best verified checkpoint available by noon; the Canvas quiz is required regardless of score.
+- **Status**: pending (optional) | **Owner**: Cathy | **Track**: stable
+- **Official deadline**: Oct 2, 2026, 11:59 PM as shown in course materials; verify platform countdown.
+- **Internal priority**: best effort; no mandatory noon target or cutoff-success gate.
+- **Prerequisite**: verified pipeline and a trained checkpoint ready for inference.
 
-## Steps
+## Confirmed status
 
-1. Load the best checkpoint via the submission path (explicit load, not "whatever is in memory").
-2. Generate `submission.csv` with the DO-NOT-MODIFY cell; preview columns/rows.
-3. Submit via Kaggle API with a meaningful message (e.g. `baseline_5cnn_ep{N}_seed{S}`).
-4. Verify on the Kaggle leaderboard: score ≥ 0.80, **your name visible**, correct submission selected.
-5. Freeze that checkpoint dir: never overwrite (add note in config).
-6. **Complete the HW2 Canvas Quiz** (separate requirement!).
-7. Record Kaggle score + submission timestamp in `experiments/runs/`.
+- [x] Canvas HW2 quiz completed — Cathy confirmed on Sep 29, 2026.
+- The quiz score/full-mark condition has not been independently checked. Do not infer a score from completion.
 
-## Acceptance
+## If ready before the early deadline
 
-- [ ] Best verified checkpoint submitted by noon; score ≥ 0.80 is the target (best-effort, not a pipeline-compression gate)
-- [ ] Name on leaderboard; submission message + timestamp recorded
-- [ ] Canvas quiz submitted (required regardless of score)
-- [ ] Checkpoint dir frozen; dry-run reproducibility note written
-- [ ] ≥ 2 Kaggle slots left unused for same-day fixes
+1. Load the selected checkpoint explicitly.
+2. Generate and validate the CSV through the official submission flow.
+3. Record the actual Kaggle score, timestamp and leaderboard identity.
+4. Freeze the checkpoint and corresponding code/config.
 
-## Notes / current status
+## Completion interpretation
 
-- (fill as you run)
+Reaching Kaggle 0.80 before the deadline is desirable, but it is not required for internal project progress. If not ready or below cutoff, record that outcome and continue the complete setup/training process. Do not shorten, omit or rush correctness, resume or learning steps to satisfy this optional target.
+
+Official scoring consequences are unchanged. Final Kaggle and Gradescope submissions remain required project deliverables.

@@ -1,6 +1,22 @@
 # Critical Path & Buffers
 
-> Times are wall-clock targets, EST. The path is "as-early-as-possible"; every ⚠️ is a known place the schedule breaks.
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
+
+## Engineering dependencies
+
+```text
+Environment and persistent storage readiness
+  + complete starter TODOs (not only backbone)
+→ limited-step, full-label-space smoke test
+→ save / fresh-session reload / resume validation
+→ measured full-data baseline training
+→ frozen checkpoint and verified inference/submission path
+→ readiness-based model exploration
+→ final model freeze
+→ final Kaggle and Gradescope submission
+```
+
+No long training before the engineering smoke/resume checks pass. Do not omit these checks to meet the early cutoff.
 
 ## Baseline track (stable) — Oct 2 checkpoint = best-effort milestone
 
@@ -11,16 +27,21 @@ Sep 30        T04 baseline training (≈20 epochs reference budget, measured per
               ⚠️ if per-epoch × 20 > remaining time → submit best available as best-effort;
                  do NOT compress pipeline or truncate learning to hit Oct 2
 Oct 1         T04 finish + best-checkpoint selection; dry-run submission.csv locally
-Oct 2 morning T05 Kaggle submission (best-effort, target by NOON) + Canvas quiz
+Oct 2 morning T05 Kaggle submission (best-effort, target by NOON)
               ⚠️ buffer: leaderboard queue, upload failures, daily-limit count
 ```
 
 **Pipeline hard gate**: T03 fully green before T04 long training. No exceptions. Oct 2 itself is best-effort, not a hard gate.
 
-## Exploration track — deadline Oct 9 11:59 PM EST
+## Calendar anchors
+
+- **Oct 2:** optional early-cutoff opportunity. Try only when ready; no mandatory noon target and no requirement to stop necessary work to submit.
+- **Oct 9:** official on-time Kaggle deadline; preserve a submission buffer.
+- **Oct 11:** official on-time Gradescope code-package deadline per starter/writeup; preflight packaging earlier.
+- Sources label deadlines EST; confirm course-platform countdown before execution. Slack dates differ across materials and are not the planning baseline.
 
 ```text
-(enter after verified baseline T04 exists; Oct 2 checkpoint runs in parallel as best-effort)
+(reference schedule — enter after verified baseline T04 exists; Oct 2 checkpoint runs in parallel as best-effort)
 Oct 2 evening  T06 start ResNet CE screen (subset, 2–3 epochs, steps+wall-clock recorded)
 Oct 3–4        T06 full-data confirmation vs H1 baseline
                T07 ArcFace screen (same backbone, short runs)
@@ -32,19 +53,17 @@ Oct 8          T10 final selection; Oct 9 daytime = submission buffer
 Oct 10–11      Gradescope zip (notebook steps 1–7), cleanup, submit
 ```
 
-## Budget rules
+## Readiness and budget
 
-- **Kaggle slots (10/day)**: slot only spent when val combined > current committed best. Reserve ≥2 slots on Oct 2 and ≥3 on Oct 9.
-- **GPU**: Phase A budget ≤ 50% of available PSC hours through Oct 2; exploration uses the rest.
-- **Never overwrite** the checkpoint dir tied to a committed submission.
-- **Stop rules**: any task blocked >4h without progress → escalate to staff Piazza question or fallback in `PLAN.md` risk table.
+- Canvas HW2 quiz is already completed, per Cathy's Sep 29 confirmation; it does not depend on model training.
+- Reaching early 0.80 is not a prerequisite for residual-model exploration. A verified baseline and sufficient understanding are.
+- Estimate full-data epoch time including validation, plus data staging, checkpointing, queue and inference costs.
+- Do not turn a short subset epoch into a full-data timing estimate without accounting for the difference.
+- Reserve time for final training, inference and packaging; make later experiments optional when budgets are exhausted.
+- Freeze a valid candidate even if ArcFace, extra augmentation or TTA are unfinished or unhelpful.
+- Preserve committed checkpoint directories and record code/config/run identity.
+- PSC fallback must be based on actual platform availability; background execution does not extend a GPU allocation.
 
-## Timeline sketch
+## Pending technical revision
 
-```text
-Sep29 ──┬─ T01 ──► T02 ──► T03 ─┐
-        │         (env+code, no GPU)
-Sep30 ──┴─ T04 training ────► Oct1 checkpoint pick ──► Oct2 AM T05 SUBMIT ✅
-Oct2 PM ───► T06 screen ──► Oct3-4 T06 full ──► Oct4-6 T07 ──► Oct5-7 T08 ∥
-Oct7 ──► review ──► Oct7-8 T09 ──► Oct8 T10 pick ──► Oct9 T10 SUBMIT ✅ ──► Oct10-11 Gradescope
-```
+Use the GPT and Codex reviews to revise individual tasks. The previous date-by-date checkpoint sprint and arbitrary 50% Phase-A GPU allocation are superseded by the readiness-based schedule above. No replacement epoch-time or GPU-hour estimate is claimed until measured.

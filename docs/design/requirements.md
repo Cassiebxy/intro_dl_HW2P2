@@ -28,8 +28,10 @@ Final Kaggle Score = 0.5 × Classification Accuracy + 0.5 × (1 − Verification
 Checkpoint requires ALL of (Oct 2 is a **best-effort** milestone — miss ⇒ −3%/×0.97, but it is not a gate that compresses the pipeline or truncates learning steps):
 - [ ] Kaggle submission made (join via the exact link in `references/`)
 - [ ] Score ≥ 0.80 cutoff (target, not a pipeline-compression gate)
-- [ ] HW2 Canvas Quiz completed
+- [x] HW2 Canvas Quiz completed — Cathy confirmed Sep 29; score not independently verified
 - [ ] Name visible on the Kaggle leaderboard
+
+> **Planning priority (not course policy):** Cathy accepts missing the early cutoff. Do not compress setup, correctness checks or learning to reach 0.80 by Oct 2; the official requirements and consequences above remain unchanged.
 
 ## Submission integrity & data rules (hard — from starter Requirement Acknowledgement)
 

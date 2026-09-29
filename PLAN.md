@@ -1,7 +1,9 @@
-# HW2P2 Master Plan (2026-09-29 → 2026-10-09)
+# HW2P2 Master Plan (2026-09-29 → 2026-10-11)
 
 > This file is the single source of truth for the HW2P2 project plan.
 > Official requirements live in `references/` and `starter/`; per-task details live in `docs/implementation/tasks/`.
+
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
 
 ## Context
 
@@ -19,10 +21,10 @@
 
 | Track | Goal | Window |
 | --- | --- | --- |
-| Stable track | A reproducible verified baseline; submit a checkpoint by Oct 2 as **best-effort** (miss ⇒ −3% penalty, not a pipeline-compression gate) | Sep 29 → Oct 2 |
-| Exploration track | Optional stronger residual CNN + ArcFace + augmentation + TTA, budget/val-driven | Oct 2 evening → Oct 9 |
+| Stable track | A complete, correct, reproducible pipeline and verified baseline; checkpoint by Oct 2 as **best-effort** (miss ⇒ −3% penalty, not a pipeline-compression gate) | Sep 29 → Oct 2; readiness-driven |
+| Exploration track | Optional stronger residual CNN + ArcFace + augmentation + TTA after a verified baseline, budget/val-driven | Baseline ready → Oct 9 |
 
-## Phase A — Baseline track (Oct 2 checkpoint = best-effort milestone)
+## Phase A — Complete setup and reproducible baseline (Oct 2 checkpoint = best-effort milestone)
 
 ### A1. PSC environment & storage verification (T01, first thing)
 - SSH Bridges2 → request compute node → load the course shared conda env → launch Jupyter on the GPU node.
@@ -37,7 +39,7 @@
 ### A3. End-to-end smoke test (T03, before any long training)
 
 ```text
-full 8,631-class output, limited steps/batches (not a reduced label space)
+full 8,631-class output, limited samples/batches/steps (not a reduced label space)
 → forward/backward → save checkpoint → fresh kernel reload (integrity)
 → resume ≥1 step (continues optimizing) → classification inference
 → verification EER → submission.csv via the official immutable cell
@@ -48,14 +50,14 @@ full 8,631-class output, limited steps/batches (not a reduced label space)
 ### A4. Baseline training (T04, start immediately after smoke test)
 - Starter recommends **~20 epochs as a reference budget**; batch_size 64, increase if V100 memory allows.
 - Record per epoch: train/val cls acc, ver EER, combined score; select best checkpoint by combined score.
-- Estimate per-epoch wall-clock first; if it cannot fit before Oct 2, do **not** compress the pipeline or truncate learning to chase the date. Oct 2 is best-effort — submit the best verified checkpoint available and keep the full pipeline honest.
+- Estimate per-epoch wall-clock first (full-data, including validation); if it cannot fit before Oct 2, do **not** compress the pipeline or truncate learning to chase the date. Oct 2 is best-effort — submit the best verified checkpoint available and keep the full pipeline honest. 20 epochs is a reference budget, not a score guarantee.
 
-### A5. Checkpoint submission (T05, by Oct 2 **noon** as best-effort)
-- Use the DO-NOT-MODIFY cells to generate and submit `submission.csv`; confirm the leaderboard shows your name; score ≥ 0.80 is the target, not a pipeline-compression gate.
-- **Complete the HW2 Canvas Quiz** (a checkpoint requirement).
-- Keep buffer for training completion, download/upload, and leaderboard queue.
+### A5. Optional early-cutoff attempt (T05, target Oct 2 **noon** as best-effort)
+- When the verified pipeline and trained model are ready, use the DO-NOT-MODIFY cells to generate and submit `submission.csv`; confirm the leaderboard shows your name; score ≥ 0.80 is the target, not a pipeline-compression gate. Missing it does not block the project or justify skipping steps.
+- **Canvas HW2 Quiz: completed**, confirmed by Cathy on Sep 29; no quiz score independently verified.
+- Keep buffer for training completion, download/upload, and leaderboard queue; the final Kaggle and Gradescope submissions remain project deliverables.
 
-## Phase B — Exploration track (Oct 2 evening → Oct 9)
+## Phase B — Exploration track (readiness-driven; original dates below are provisional)
 
 > B1–B4 are **optional explorations**, entered only when a verified baseline exists (T04) and justified by validation results + remaining time budget — not mandatory phases. The fixed route is: baseline → residual CNN → ArcFace (only B5 final selection is mandatory).
 
@@ -76,16 +78,18 @@ full 8,631-class output, limited steps/batches (not a reduced label space)
 
 ## Risks and fallbacks
 
+The technical revisions listed in the Codex/GPT reviews remain proposed unless explicitly marked applied; this update records Cathy's priorities, not completion of the full review backlog.
+
 | Risk | Fallback |
 | --- | --- |
 | PSC queue / node wait | Queue time is used for T02/T03 code work. A background run does **not** survive PSC allocation limits or node loss — rely on checkpoint + resume (verified in T03), not on background continuity |
-| 20 epochs won't fit before Oct 2 | Oct 2 is best-effort: submit the best verified checkpoint available; do not compress pipeline or learning steps for the date |
+| Baseline cannot reach 0.80 before Oct 2 | Oct 2 is best-effort: keep completing and validating the pipeline, submit the best verified checkpoint available, record the missed opportunity and continue. Do not compress required steps to chase the cutoff |
 | V100 OOM | Reduce batch_size / workers; record it, don't brute-force |
 | Low/Med/High cutoffs still TBD | 0.80 is the checkpoint target, not a hard gate that compresses the pipeline; exploration decisions based on val combined score |
 | ArcFace rule violations | Checklist against @301 before implementing; ask staff when ambiguous |
 
 ## Verification (definition of done)
 
-- **Phase A**: full smoke-test chain passes; reproducible verified baseline; Canvas quiz submitted; checkpoint submitted by Oct 2 as best-effort (score ≥ 0.80 is a target, not a pipeline-compression gate).
-- **Phase B**: every experiment has a record in `experiments/runs/`; final model selected by val combined score on its own merit (not required to beat the checkpoint version).
+- **Phase A**: setup, complete pipeline, smoke/resume checks, baseline measurements, and a reproducible inference path are verified; checkpoint submitted by Oct 2 as best-effort (score ≥ 0.80 is a target, not a pipeline-compression gate). Canvas quiz is user-confirmed complete.
+- **Phase B**: every experiment has a record in `experiments/runs/`; final model selected by val combined score, with final submission's val combined score ≥ checkpoint version (otherwise explain in the decision log).
 - **Final**: Gradescope zip generated and auto-grading passes; final `MODEL` matches the selected Kaggle submission model.

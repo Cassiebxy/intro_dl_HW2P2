@@ -1,6 +1,8 @@
 # T10 — Final Selection, Kaggle Final & Gradescope
 
-- **Status**: pending | **Owner**: Cathy | **Track**: both | **Due**: Oct 8 selection; **Oct 9 final submit (daytime buffer)**; Oct 10–11 Gradescope | **Blocked-by**: the selected final model — T06–T09 if explored, otherwise the verified baseline (T04) if exploration is skipped
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
+
+- **Status**: pending | **Owner**: Cathy | **Track**: both | **Due**: Oct 8 selection; **Oct 9 final submit (daytime buffer)**; Oct 10–11 Gradescope | **Blocked-by**: at least one validated reproducible candidate; optional experiments completed or explicitly stopped
 
 ## Steps
 
@@ -13,8 +15,7 @@
 ## Acceptance
 
 - [ ] Selection rationale in decision log (combined score table across candidates)
-- [ ] Final model chosen by **val combined score**, not by having to beat the checkpoint version; the checkpoint is a best-effort milestone, not a bar the final must clear
-- [ ] Final `MODEL` in the Gradescope notebook matches the selected Kaggle submission model (no train-time-only variant left behind)
+- [ ] Kaggle final selected score ≥ checkpoint score (else explain)
 - [ ] Gradescope zip generated; auto-grading result checked; submission timestamped
 - [ ] `experiments/runs/` complete for every promoted run
 
