@@ -1,7 +1,7 @@
 # Review: Claude planning revision and writeup compliance — 2026-09-29
 
 - **Reviewed object:** `main @ f6afb6ced2e66906229e2c84e3a6316b86de02ff`, including Claude revision `8a86f5d965cecd3ea6d6e0b7321c6468c1c07b10` and the subsequent merge.
-- **Reviewer:** Codex (GPT-6), MLE planning review; stored in `review/gpt/` at Cathy's explicit request.
+- **Reviewer:** GPT-6.1 Sol, MLE planning review; stored in `review/gpt6.1sol/`.
 - **Verdict:** overall direction approved; fix the Phase-A acceptance criteria and merge inconsistencies before treating the plan as an execution contract. Remaining modeling details can be resolved before their respective optional experiments.
 - **Scope of this commit:** adds this review only. Findings are proposals, not implemented fixes or accepted user decisions.
 

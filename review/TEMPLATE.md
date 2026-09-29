@@ -1,6 +1,6 @@
 # Review Comment Template
 
-> Copy per review event. Filename: `YYYY-MM-DD_<topic>.md` inside the reviewer's folder (`claude/`, `codex/`, `misc/`).
+> Copy per review event. Filename: `YYYY-MM-DD_<topic>.md` inside the reviewer's folder (for example, `claude/`, `gpt6.1sol/`, `gpt5.6sol/`, `misc/`).
 
 ```markdown
 # Review: <topic> — <reviewer name> — YYYY-MM-DD

@@ -64,7 +64,7 @@ intro_dl_HW2P2/
 | Current progress per task | `docs/implementation/taskboard.md` → `tasks/` |
 | Why a design choice was made | `docs/design/decision_log.md`, `docs/design/model_hypotheses.md` |
 | Experiment evidence | `experiments/runs/` |
-| Prior review feedback | `review/<ai>/` |
+| Prior review feedback | `review/<model>/` |
 
 ## Repo scope (this repo is public)
 
