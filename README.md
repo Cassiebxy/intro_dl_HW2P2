@@ -72,7 +72,7 @@ This repository is a **public** repo and holds **only** planning, records, and m
 
 - **Working implementation is not published here.** Keep working notebook/code in a **private** repo or purely local Git; the assignment implementation should not be made public just because API keys were removed — a key-stripped notebook is still your graded solution.
 - **Credentials** (Kaggle API, wandb key) come from environment variables or a local **untracked** config; never paste them into a notebook copy that might be committed or shared.
-- Do not assume that deleting a key makes a notebook safe to push; the starter's submission/credential cells are protected and must stay unmodified.
+- Do not assume that deleting a key makes a notebook safe to push. The starter explicitly marks the **submission cells** DO-NOT-MODIFY — that protected status applies to those cells, not to every credential-setup cell; where a credential cell is editable, use environment variables. The graded notebook itself must still never be pushed here.
 
 ## Data
 

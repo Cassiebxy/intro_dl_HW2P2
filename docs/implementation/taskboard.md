@@ -2,13 +2,13 @@
 
 > Statuses: `pending / in_progress / blocked / done / dropped`. Update this file AND the task file when status changes.
 
-> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/gpt6.1sol/2026-09-29_planning_review.md`.
 
 ## Phase A — complete setup and verified baseline (Oct 2 checkpoint = best-effort milestone)
 
 | ID | Task | Status | Blocked-by | Deliverable | Actual result |
 | --- | --- | --- | --- | --- | --- |
-| T01 | PSC env + storage verify | pending | — | V100, shared env, `$LOCAL` data + persistent ckpt dir, DataLoader + kernel-reload reload checks | |
+| T01 | PSC env + storage verify | pending | — (parallel with T02) | V100, shared env, `$LOCAL` data staged + spot-checked, persistent ckpt dir + kernel-reload check, credentials via env/git-ignored config | |
 | T02 | Starter pipeline completion + baseline CNN | pending | — | full runnable pipeline (datasets/loaders/backbone/head/criterion/optimizer/scheduler/metrics), param count ≤30M | |
 | T03 | End-to-end smoke test | pending | T01, T02 | full chain incl. submission.csv generated (8631 output, limited steps) | |
 | T04 | Baseline training (~20 epochs, measured) | pending | T03 | best checkpoint by val combined | |
@@ -26,6 +26,7 @@
 
 ## Rules
 
+- T01 (env/storage/credentials) and T02 (pipeline code + frozen recipe) may proceed **in parallel**; both must be complete before T03.
 - T03 is the hard **pipeline** gate: no long training before the whole smoke chain is green.
 - **Oct 2 is a best-effort milestone, not a hard gate.** The full pipeline and honest learning steps are never compressed to hit that date; exploration (T06/T08) is blocked by a verified baseline (T04), not by the checkpoint submission (T05).
 - Every done task links its evidence file in `experiments/runs/`.

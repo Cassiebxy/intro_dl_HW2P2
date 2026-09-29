@@ -1,6 +1,6 @@
 # Critical Path & Buffers
 
-> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/codex/2026-09-29_planning_review.md`.
+> **Cathy update — 2026-09-29 15:11 America/New_York:** Canvas HW2 quiz is completed (user-confirmed; score not independently checked). The Oct 2 early cutoff is a best-effort opportunity, not an internal completion gate. Preserve full setup, pipeline completion, correctness checks, resume validation, and learning steps even if 0.80 is not reached by Oct 2. Official deadlines and grading consequences remain unchanged. This decision supersedes earlier checkpoint-sprint/noon-target instructions; see `review/gpt6.1sol/2026-09-29_planning_review.md`.
 
 ## Engineering dependencies
 
@@ -20,14 +20,18 @@ No long training before the engineering smoke/resume checks pass. Do not omit th
 
 ## Baseline track (stable) — Oct 2 checkpoint = best-effort milestone
 
+> **Illustrative windows, conditional on readiness — not per-day mandates.** No task "must finish today"; move to the next step only when the previous acceptance criteria are actually green.
+
 ```text
-Sep 29        T01 PSC env + storage verify ──► T02 pipeline completion + baseline ──► T03 smoke test
-              (must finish today; ⚠️ PSC queue wait: use the wait for T02/T03 code work, not background runs)
-Sep 30        T04 baseline training (≈20 epochs reference budget, measured per-epoch)
+T01 ∥ T02     PSC env/storage/credential verify ∥ starter pipeline completion + frozen baseline recipe
+              (parallel preparation is allowed; both must be complete before T03;
+               ⚠️ PSC queue wait: use it for T02/T03 code work, not background runs)
+T03           limited-step smoke + reload/resume checks — hard gate before any long training
+T04           baseline training (≈20 epochs reference budget, measured per-epoch, within active allocation)
               ⚠️ if per-epoch × 20 > remaining time → submit best available as best-effort;
                  do NOT compress pipeline or truncate learning to hit Oct 2
-Oct 1         T04 finish + best-checkpoint selection; dry-run submission.csv locally
-Oct 2 morning T05 Kaggle submission (best-effort, target by NOON)
+Oct 1–2       T04 finish + best-checkpoint selection; dry-run submission.csv locally;
+              T05 Kaggle submission when ready — best-effort, earlier is nicer but no mandatory noon target
               ⚠️ buffer: leaderboard queue, upload failures, daily-limit count
 ```
 
@@ -66,4 +70,4 @@ Oct 10–11      Gradescope zip (notebook steps 1–7), cleanup, submit
 
 ## Pending technical revision
 
-Use the GPT and Codex reviews to revise individual tasks. The previous date-by-date checkpoint sprint and arbitrary 50% Phase-A GPU allocation are superseded by the readiness-based schedule above. No replacement epoch-time or GPU-hour estimate is claimed until measured.
+Phase A contract fixes from the two 2026-09-29 reviews (`review/gpt5.6sol/2026-09-29_gpt56_sol_claude_plan_rereview.md` findings 1–7, `review/gpt6.1sol/2026-09-29_claude_plan_followup_review.md` R1–R4) are **applied** to T01–T04/T10, PLAN and taskboard (2026-09-29). Phase B findings (gpt6.1sol R5–R11, gpt5.6sol #8–16) stay open and must be resolved **before their corresponding tasks** (T06–T09). The previous date-by-date checkpoint sprint and arbitrary 50% Phase-A GPU allocation are superseded by the readiness-based schedule above. No replacement epoch-time or GPU-hour estimate is claimed until measured.

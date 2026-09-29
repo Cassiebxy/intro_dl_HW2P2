@@ -17,8 +17,8 @@ hw2p2_data/
 │   └── test/
 │       └── images/               # 43,097 images, NO labels (Kaggle test set)
 ├── ver_data/                     # verification task images (12,000 .jpg, opaque names)
-├── val_pairs.txt                 # 1,000 lines: "<imgA> <imgB> <0|1>" (same/different identity)
-└── test_pairs.txt                # 5,000 lines, same format (Kaggle test set)
+├── val_pairs.txt                 # 1,000 lines, LABELED: "<imgA> <imgB> <0|1>" — 3 fields, same/different identity
+└── test_pairs.txt                # 5,000 lines, UNLABELED: "<imgA> <imgB>" — 2 filenames only (Kaggle test set)
 ```
 
 ## Facts
@@ -32,7 +32,7 @@ hw2p2_data/
 ## Path conventions (two zones — do not mix)
 
 - **Local machine**: `hw2p2_data/` next to the repo; point `config['data_root']` here.
-- **PSC node-local staging**: dataset **must** live on `$LOCAL/hw2p2_data` (per starter cells 25/39/41) to avoid shared-FS I/O bottlenecks. `$LOCAL` is **temporary** — wiped on node change / allocation end, so re-download the dataset into `$LOCAL` at the start of each new-node session. `config['data_root']` = `$LOCAL/hw2p2_data`.
+- **PSC node-local staging**: dataset **must** live on `$LOCAL/hw2p2_data` (per starter cells 25/39/41) to avoid shared-FS I/O bottlenecks. `$LOCAL` is **temporary** — wiped on node change / allocation end, so the data must be re-staged into `$LOCAL` at the start of each new-node session. Re-staging means *either* re-downloading from Kaggle *or* copying/extracting from an allowed persistent dataset cache on the home path (subject to home-quota and platform rules) — both are acceptable; the requirement is the node-local placement, not a specific method. `config['data_root']` = `$LOCAL/hw2p2_data`.
 - **PSC persistent**: checkpoints, code, notebooks, logs live on the persistent home path (e.g. `/jet/home/<user>/hw2p2/...`), **never** on `$LOCAL`. `config['checkpoint_dir']` points here — must be writable, survive a kernel restart, and **never be reused by a new run** once its score is committed.
 - The raw zip `hw-2-p-2-fall-2026-student-competition.zip` is redundant once extracted; both stay out of Git.
 

@@ -1,6 +1,15 @@
 # HW2P2 official dataset
 hw2p2_data/
 
+# Credentials — NEVER commit (prefer env vars; these are the fallback file patterns)
+.env
+.env.*
+*.env
+secrets.json
+secrets*.json
+credentials.json
+kaggle.json
+
 # Model checkpoints / weights
 checkpoints/
 *.pt

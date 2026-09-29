@@ -11,7 +11,7 @@
 - **Compliance & cost**: trivially compliant; ~20 epochs on V100 (measure per-epoch wall-clock in T03/T04).
 - **Minimal experiment**: full-8631-output, limited-step smoke (T03) before full run.
 - **Promotion rule**: promote H1 as the stable baseline on **reproducibility, validation metrics, training curves, and measured budget** — not on clearing an early Kaggle cutoff. The Oct 2 checkpoint is a best-effort milestone, not the promotion gate.
-- **Stop rule**: a 20-epoch val combined below the ~0.80 region is **not** automatically an engineering bug. First confirm curves/metrics/budget are healthy; a low score with healthy curves is a capacity signal about the shallow baseline, not necessarily a pipeline fault. Do not compress the pipeline or learning steps to chase the date.
+- **Stop rule**: a 20-epoch val combined below the **~80.0% region (local percent scale** — `combined_pct`, per the units contract in `docs/design/requirements.md`; `0.80` is reserved for the Kaggle fraction scale) is **not** automatically an engineering bug. First confirm curves/metrics/budget are healthy; a low score with healthy curves is a capacity signal about the shallow baseline, not necessarily a pipeline fault. Do not compress the pipeline or learning steps to chase the date.
 
 ## H2 — Custom residual CNN (ResNet-style, from scratch) + CE
 

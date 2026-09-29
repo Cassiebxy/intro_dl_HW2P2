@@ -18,6 +18,19 @@ Final Kaggle Score = 0.5 × Classification Accuracy + 0.5 × (1 − Verification
 - Cutoffs: Very Low = **0.80** (checkpoint requirement); Low/Medium/High TBD, released after checkpoint deadline.
 - Kaggle daily submission limit: **10**.
 
+### Units contract (never mix scales)
+
+Kaggle scores are **fractions (0–1)**; the starter's validation code (`valid_epoch_ver`, cell 85 combined score) works in **percent units (0–100)**. Define and log explicitly:
+
+```
+local: cls_acc_pct, eer_pct, combined_pct = 0.5 × cls_acc_pct + 0.5 × (100 − eer_pct)
+Kaggle: fraction = pct / 100   (convert only at the Kaggle boundary)
+```
+
+- Compare validation scores **with validation scores** — never against a Kaggle score from a different split.
+- Experiment logs must state the unit for every metric.
+- Deterministic metric sanity checks (T02 acceptance): both positive and negative pairs present; same-identity pairs yield higher cosine similarity than different-identity pairs; perfectly separated scores give EER ≈ 0. Smoke EER from an untrained model only proves the metric path works.
+
 ## Deadlines & submission checklist
 
 | What | When | Notes |
@@ -28,7 +41,7 @@ Final Kaggle Score = 0.5 × Classification Accuracy + 0.5 × (1 − Verification
 Checkpoint requires ALL of (Oct 2 is a **best-effort** milestone — miss ⇒ −3%/×0.97, but it is not a gate that compresses the pipeline or truncates learning steps):
 - [ ] Kaggle submission made (join via the exact link in `references/`)
 - [ ] Score ≥ 0.80 cutoff (target, not a pipeline-compression gate)
-- [x] HW2 Canvas Quiz completed — Cathy confirmed Sep 29; score not independently verified
+- [ ] HW2 Canvas Quiz **with full score** (official requirement, writeup p.1) — completion is user-confirmed by Cathy on Sep 29, but the full-score requirement is NOT independently verified here
 - [ ] Name visible on the Kaggle leaderboard
 
 > **Planning priority (not course policy):** Cathy accepts missing the early cutoff. Do not compress setup, correctness checks or learning to reach 0.80 by Oct 2; the official requirements and consequences above remain unchanged.
