@@ -45,6 +45,7 @@ intro_dl_HW2P2/
 │   ├── TEMPLATE.md                # review comment template
 │   ├── claude/                    # Claude (Code) reviews, date-prefixed filenames
 │   ├── codex/                     # Codex reviews
+│   ├── gpt/                       # GPT reviews, date-prefixed filenames
 │   └── misc/                      # other AIs / classmates
 ├── references/
 │   ├── Piazza_HW2P2_Staff_Guidelines.md   # archived official staff clarifications
