@@ -44,8 +44,8 @@ intro_dl_HW2P2/
 ├── review/                        # AI / peer review comments
 │   ├── TEMPLATE.md                # review comment template
 │   ├── claude/                    # Claude (Code) reviews, date-prefixed filenames
-│   ├── codex/                     # Codex reviews
-│   ├── gpt/                       # GPT reviews, date-prefixed filenames
+│   ├── gpt6.1sol/                 # GPT-6.1 Sol reviews
+│   ├── gpt5.6sol/                 # GPT-5.6 Sol reviews
 │   └── misc/                      # other AIs / classmates
 ├── references/
 │   ├── Piazza_HW2P2_Staff_Guidelines.md   # archived official staff clarifications
