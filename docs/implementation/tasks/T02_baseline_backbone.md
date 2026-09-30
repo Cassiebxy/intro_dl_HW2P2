@@ -1,6 +1,6 @@
 # T02 — Starter Pipeline Completion + Baseline 5-Layer CNN
 
-- **Status**: pending | **Owner**: Cathy | **Track**: stable | **Due**: Sep 29–30
+- **Status**: done (local CPU verification; PSC GPU check deferred to T03) | **Owner**: Cathy | **Track**: stable | **Due**: Sep 29–30
 - **Hypothesis**: H1 (see `docs/design/model_hypotheses.md`)
 - **Scope note**: the starter notebook is a scaffold, not a turnkey baseline. The official 5-layer CNN (cell 68) is only **one** of many `TODO`/`NotImplementedError` cells. T02 = make the whole pipeline runnable end-to-end. No new model family here — only the starter's own baseline.
 
@@ -31,13 +31,28 @@
 
 ## Acceptance
 
-- [ ] Every TODO in the inventory above implemented — no `NotImplementedError` left in the run path
-- [ ] Backbone + head per FAQ, no `torchvision.models`, no pretrained weights
-- [ ] `summary()` output recorded here (layers, feature dim, params) with param count ≤ 30M
-- [ ] Full cls + ver loaders yield batches; one forward pass on CPU/MPS works locally (PSC GPU check in T03)
-- [ ] Frozen baseline recipe written down for T04 to reuse verbatim — every value explicit (lr, momentum, weight_decay, scheduler params, augmentation set, seed), no implicit defaults
-- [ ] `verification_metrics` returns the starter's expected keys in percent units; deterministic sanity checks pass: both positive and negative pairs present, same-identity pairs score higher similarity than different-identity pairs, perfectly separated scores give EER ≈ 0
+- [x] Every TODO in the inventory above implemented — no `NotImplementedError` left in the run path (cells 51/56/59/68/70/72 filled via `scripts/apply_starter_edits.py`; local runner executes the full chain)
+- [x] Backbone + head per FAQ, no `torchvision.models`, no pretrained weights (plain `nn` conv blocks; `torchinfo` fallback only for CPU summary)
+- [x] Param count recorded: **15,127,031** params (≤ 30M); feature dim 1024 after `AdaptiveAvgPool2d((1,1))` + `Flatten`; head `Linear(1024, 8631)`
+- [x] Full cls + ver loaders yield batches; forward + full train/val/test chain works on local CPU (PSC GPU check in T03)
+- [x] Frozen baseline recipe written down — see table below; T04 reuses verbatim
+- [x] `verification_metrics` percent units verified by `scripts/sanity_metrics.py` (runs the actual notebook cell 72 source): perfect separation → EER=0.0000 / AUC=100.0000 / ACC=100.0000; pos_min 0.7 > neg_max 0.25; reversed scores → AUC=0.0000; TPRs in percent; noisy case EER=17.17 / ACC=84.00 / AUC=93.52
+
+### Frozen baseline recipe (T04 reuses verbatim)
+
+| Item | Value |
+| --- | --- |
+| Model | Starter 5-layer CNN (`Network`): conv 3→64 k7 s4, 128/256/512/1024 k3 s2, pad=k//2, BN+ReLU, AdaptiveAvgPool→Flatten, Linear 1024→**8631**; 15,127,031 params |
+| Loss | `nn.CrossEntropyLoss()` |
+| Optimizer | SGD lr=0.01, momentum=0.9, weight_decay=1e-4 |
+| Scheduler | `CosineAnnealingLR(T_max=config["epochs"])` — `HW2P2_EPOCHS` = total budget, fixed across resume segments (contract in decision log 2026-09-30) |
+| Batch size | 64 (env `HW2P2_BATCH_SIZE`) |
+| Epochs | 2 default for early-submission recipe (env `HW2P2_EPOCHS`) |
+| Image size / transform | 112×112; Resize→ToTensor→ToDtype(scale)→Normalize([0.5]×3) |
+| Augmentation | train only: `RandomHorizontalFlip(p=0.5)` — intentionally minimal, T08 tests richer sets |
+| Precision | AMP fp16 autocast + GradScaler on CUDA; CPU fallback via nullcontext/CPU scaler in local runner only |
+| Seed | 42 (`HW2P2_SEED`); `torch.manual_seed` in config cell before init/shuffle/aug |
 
 ## Notes / current status
 
-- (fill as you run)
+- 2026-09-30: implemented in working notebook `HW2P2_Student.ipynb` (private repo `idl_HW2P2`, regenerate with `scripts/apply_starter_edits.py`, starter untouched). Local CPU smoke via `scripts/run_notebook_local.py`: fresh 2-epoch run combined 32.4519% → 38.3523%; resume-after-completion skips retraining and regenerates artifacts (PASS). Determinism: identical scores across runs with seed 42. Scheduler/resume contract recorded in `docs/design/decision_log.md`. PSC GPU + real-data check = T03.

@@ -9,7 +9,7 @@
 | ID | Task | Status | Blocked-by | Deliverable | Actual result |
 | --- | --- | --- | --- | --- | --- |
 | T01 | PSC env + storage verify | pending | — (parallel with T02) | V100, shared env, `$LOCAL` data staged + spot-checked, persistent ckpt dir + kernel-reload check, credentials via env/git-ignored config | |
-| T02 | Starter pipeline completion + baseline CNN | pending | — | full runnable pipeline (datasets/loaders/backbone/head/criterion/optimizer/scheduler/metrics), param count ≤30M | |
+| T02 | Starter pipeline completion + baseline CNN | done (local CPU; PSC GPU → T03) | — | full runnable pipeline (datasets/loaders/backbone/head/criterion/optimizer/scheduler/metrics), param count ≤30M | Full chain runs on local CPU runner: 15,127,031 params; combined 32.45%→38.35% over 2 epochs; resume contract verified; metrics sanity PASS; seed 42 deterministic; recipe frozen (task file) |
 | T03 | End-to-end smoke test | pending | T01, T02 | full chain incl. submission.csv generated (8631 output, limited steps) | |
 | T04 | Baseline training (~20 epochs, measured) | pending | T03 | best checkpoint by val combined | |
 | T05 | Optional early-cutoff attempt (Kaggle) | pending (optional) | T04 + verified training/inference readiness | Record attempt/result if ready; ≥0.80 desirable, name on LB | Canvas HW2 quiz completed, Cathy confirmed Sep 29; no score independently verified |
